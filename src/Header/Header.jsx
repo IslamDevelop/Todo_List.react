@@ -10,10 +10,10 @@ export const Header = () => {
 
       <ul>
         <li>
-          <Link to="/"> Home </Link>
+          <Link to="/Todo_List.react"> Home </Link>
         </li>
         <li>
-          <Link to="/Todos"> Todos </Link>
+          <Link to="/Todo_List.react/Todos"> Todos </Link>
         </li>
       </ul>
     </div>

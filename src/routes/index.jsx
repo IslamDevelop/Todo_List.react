@@ -5,8 +5,8 @@ import { Todos } from "../Todos/Todos";
 export const Routing = () => {
   return (
     <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/Todos" element={<Todos />} />
+      <Route path="/Todo_List.react" element={<Home />} />
+      <Route path="/Todo_List.react/Todos" element={<Todos />} />
     </Routes>
   );
 };
