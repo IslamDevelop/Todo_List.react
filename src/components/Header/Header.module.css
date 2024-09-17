@@ -34,3 +34,20 @@ a {
   font-size: 30px;
   font-weight: bold;
 }
+
+@media (max-width:450px) {
+  a {
+    gap: 5px;
+    font-size: 15px;
+  }
+  .logotext {
+    padding-left: 10px;
+    font-size: 25px;
+  
+    font-style: oblique;
+    letter-spacing: 5px;
+  }
+  ul {
+    padding-inline: 20px;
+  }
+}
