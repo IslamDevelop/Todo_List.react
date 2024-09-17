@@ -1,56 +1,24 @@
-import { useState } from "react";
-import Form from "../components/Form/Form";
+
+import Form from "../Form/Form";
 import styles from "./Todos.module.css";
+import { useDispatch, useSelector } from "react-redux";
+import { deleteTodo, todoComplete } from "../../store/todoSlice";
 
 export const Todos = () => {
-  const [todos, setTodos] = useState(
-    JSON.parse(localStorage.getItem("Todo")) || []
-  );
+  const todos = useSelector(state => state.todos.todos)
 
-  const Todo = (value) => {
-    let option = {
-      day: "numeric",
-      month: "numeric",
-      year: "numeric",
-      hour: "numeric",
-      minute: "numeric",
-    };
-    if (value) {
-      setTodos([
-        ...todos,
-        {
-          id: Date.now(),
-          text: value,
-          date: Intl.DateTimeFormat("ru-Us", option).format(),
-          done: false,
-        },
-      ]);
-      console.log(todos);
-    } else {
-      alert("Вы ничего не ввели");
-    }
-  };
+  const dispatch = useDispatch()
 
-  const deleteTodo = (id) => {
-    setTodos([...todos.filter((item) => item.id !== id)]);
-  };
-
-  const todoComplete = (id) => {
-    setTodos([
-      ...todos.map((todo) =>
-        todo.id === id ? { ...todo, done: !todo.done } : { ...todo }
-      ),
-    ]);
-  };
 
   localStorage.setItem("Todo", JSON.stringify(todos));
 
   return (
     <div className={styles.container}>
-      <Form Todo={Todo} />
+      <Form />
 
       <ul className={styles.todo}>
         {todos.map((item) => {
+       
           return (
             <li key={item.id} className={styles.todoLi}>
               <div className={styles.contain}>
@@ -59,7 +27,7 @@ export const Todos = () => {
                   type="checkbox"
                   defaultChecked={item.done}
                   onClick={() => {
-                    todoComplete(item.id);
+                    dispatch(todoComplete(item.id));
                   }}
                 />
                 <span
@@ -73,9 +41,10 @@ export const Todos = () => {
               </div>
               <img
                 className={styles.deleteImage}
-                src="./public/delete-clipboard-svgrepo-com.svg"
+                src="./src/assets/delete-clipboard-svgrepo-com.svg"
                 onClick={() => {
-                  deleteTodo(item.id);
+                  dispatch(deleteTodo(item.id))
+                  
                 }}
               />
             </li>

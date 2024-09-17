@@ -1,6 +1,7 @@
 import { Route, Routes } from "react-router-dom";
-import { Home } from "../Home/Home";
-import { Todos } from "../Todos/Todos";
+import { Home } from "../components/Home/Home";
+import { Todos } from "../components/Todos/Todos";
+
 
 export const Routing = () => {
   return (

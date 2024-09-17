@@ -1,5 +1,6 @@
 import "./App.css";
-import { Header } from "./Header/Header";
+import { Header } from "./components/Header/Header";
+
 import { Routing } from "./routes";
 
 function App() {

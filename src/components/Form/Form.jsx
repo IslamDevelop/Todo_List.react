@@ -1,14 +1,20 @@
 import { useState } from "react";
 import styles from "./Form.module.css";
+import { useDispatch } from "react-redux";
+import { Todo } from "../../store/todoSlice";
 
-const Form = (props) => {
+const Form = () => {
   const [value, setValue] = useState("");
+
+const dispatch = useDispatch()
+  const addTodo = () => dispatch(Todo(value))
 
   const submit = (e) => {
     e.preventDefault();
     setValue("");
-    console.log(props);
-    props.Todo(value);
+    addTodo();
+    
+  
   };
 
   const onChange = (e) => {
