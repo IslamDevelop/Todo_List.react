@@ -4,6 +4,7 @@ import styles from "./Todos.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteTodo, todoComplete } from "../../store/todoSlice";
 
+
 export const Todos = () => {
   const todos = useSelector(state => state.todos.todos)
 
@@ -39,14 +40,16 @@ export const Todos = () => {
                   <h3>Дата : {item.date}</h3>
                 </span>
               </div>
-              <img
+              <span
+
                 className={styles.deleteImage}
-                src="./src/assets/delete-clipboard-svgrepo-com.svg"
                 onClick={() => {
                   dispatch(deleteTodo(item.id))
                   
                 }}
-              />
+                >
+              </span>
+            
             </li>
           );
         })}
